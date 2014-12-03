@@ -37,10 +37,6 @@ currLightState = False
 # Initialize PowerTail to off
 GPIO.output(11, currLightState)
 
-# timeOut var used to keep track of how long it's been since we saw the beacon we want
-timeOut = 25
-
-
 
 
 
@@ -143,6 +139,12 @@ def hci_le_set_scan_parameters(sock):
 def parse_events(sock, loop_count=100):
     old_filter = sock.getsockopt( bluez.SOL_HCI, bluez.HCI_FILTER, 14)
 
+
+
+	# timeOut var used to keep track of how long it's been since we saw the beacon we want
+	timeOut = 25
+	
+	
     # perform a device inquiry on bluetooth device #0
     # The inquiry should last 8 * 1.28 = 10.24 seconds
     # before the inquiry is performed, bluez should flush its cache of
