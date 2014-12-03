@@ -15,6 +15,29 @@ DEBUG = True
 # NOTE: Python's struct.pack() will add padding bytes unless you make the endianness explicit. Little endian
 # should be used for BLE. Always start a struct.pack() format string with "<"
 
+
+
+
+#Code added to handle GPIO for lights in microHERL project
+# Setup GPIO on RPi
+import RPi.GPIO as GPIO
+# Use board pin numbering
+GPIO.setmode(GPIO.BOARD)
+
+
+# Setup GPIO pins
+GPIO.setup(11, GPIO.OUT) # Output for PowerTail
+GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) #Input for door detection
+
+# Initialize light state to off
+currLightState = False
+# Initialize PowerTail to off
+GPIO.output(11, currLightState)
+
+# timeOut var used to keep track of how long it's been since we saw the beacon we want
+timeOut = 25
+
+
 import os
 import sys
 import struct
@@ -154,6 +177,14 @@ def parse_events(sock, loop_count=100):
 		    	print "\t\t UDID as String: ", returnstringpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6])
 		    	if (returnstringpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6]) == '2f234454cf6d4a0fadf2f4911ba9ffa6'):
 		    		print "Found the beacon we want!"
+		    		GPIO.output(11, True)
+		    		timeOut = 25
+		    	else:
+		    		timeOut -= 1
+		    		if (timeOut <= 0):
+		    			GPIO.output(11, False)
+		    			timeOut = 25
+		    		
 		    	
 		    	
 		    	print "\tMAJOR: ", printpacket(pkt[report_pkt_offset -6: report_pkt_offset - 4])

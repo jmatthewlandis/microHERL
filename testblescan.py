@@ -1,20 +1,7 @@
 # test BLE Scanning software
 # jcs 6/8/2014
 
-# Setup GPIO on RPi
-import RPi.GPIO as GPIO
-# Use board pin numbering
-GPIO.setmode(GPIO.BOARD)
 
-
-# Setup GPIO pins
-GPIO.setup(11, GPIO.OUT) # Output for PowerTail
-GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) #Input for door detection
-
-# Initialize light state to off
-currLightState = False
-# Initialize PowerTail to off
-GPIO.output(11, currLightState)
 
 
 
