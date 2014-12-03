@@ -16,7 +16,10 @@ DEBUG = True
 # should be used for BLE. Always start a struct.pack() format string with "<"
 
 
-
+import os
+import sys
+import struct
+import bluetooth._bluetooth as bluez
 
 #Code added to handle GPIO for lights in microHERL project
 # Setup GPIO on RPi
@@ -38,10 +41,12 @@ GPIO.output(11, currLightState)
 timeOut = 25
 
 
-import os
-import sys
-import struct
-import bluetooth._bluetooth as bluez
+
+
+
+
+
+
 
 LE_META_EVENT = 0x3e
 LE_PUBLIC_ADDRESS=0x00
