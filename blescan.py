@@ -151,6 +151,10 @@ def parse_events(sock, loop_count=100):
 			print "-------------"
                     	#print "\tfullpacket: ", printpacket(pkt)
 		    	print "\tUDID: ", printpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6])
+		    	if (printpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6]) == '2f 23 44 54 cf 6d 4a 0f ad f2 f4 91 1b a9 ff a6 None'):
+		    		print "Found the beacon we want!"
+		    	
+		    	
 		    	print "\tMAJOR: ", printpacket(pkt[report_pkt_offset -6: report_pkt_offset - 4])
 		    	print "\tMINOR: ", printpacket(pkt[report_pkt_offset -4: report_pkt_offset - 2])
                     	print "\tMAC address: ", packed_bdaddr_to_string(pkt[report_pkt_offset + 3:report_pkt_offset + 9])
