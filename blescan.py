@@ -39,7 +39,7 @@ GPIO.output(11, currLightState)
 
 
 # Initialize our time out variable so we can deactivate the light after a certain time
-timeOut = 25
+timeOut = 5
 
 
 
@@ -183,12 +183,12 @@ def parse_events(sock, loop_count=100):
 		    	if (returnstringpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6]) == '2f234454cf6d4a0fadf2f4911ba9ffa6'):
 		    		print "Found the beacon we want!"
 		    		GPIO.output(11, True)
-		    		timeOut = 25
+		    		timeOut = 5
 		    	else:
 		    		timeOut = timeOut - 1
 		    		if (timeOut <= 0):
 		    			GPIO.output(11, False)
-		    			timeOut = 25
+		    			timeOut = 5
 		    		
 		    	
 		    	
