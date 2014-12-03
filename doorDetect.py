@@ -23,9 +23,11 @@ while (True) :
 		
 		print("Door closed")
 		if (currLightState == True):
-			GPIO.output(11, False)
+			currLightState = False
+			GPIO.output(11, currLightState)
 		else:
-			GPIO.output(11, True)
+			currLightState = True
+			GPIO.output(11, currLightState)
 		
 		
 		
