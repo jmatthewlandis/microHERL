@@ -38,8 +38,7 @@ currLightState = False
 GPIO.output(11, currLightState)
 
 
-# Initialize our time out variable so we can deactivate the light after a certain time
-timeOut = 25
+
 
 
 
@@ -138,6 +137,10 @@ def hci_le_set_scan_parameters(sock):
 
     
 def parse_events(sock, loop_count=100):
+	
+	# Initialize our time out variable so we can deactivate the light after a certain time
+	timeOut = 25
+
     old_filter = sock.getsockopt( bluez.SOL_HCI, bluez.HCI_FILTER, 14)
 	
     # perform a device inquiry on bluetooth device #0
