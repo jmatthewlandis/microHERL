@@ -138,6 +138,8 @@ def hci_le_set_scan_parameters(sock):
 
     
 def parse_events(sock, loop_count=100):
+	# reference our global timeout variable
+	global timeOut
     old_filter = sock.getsockopt( bluez.SOL_HCI, bluez.HCI_FILTER, 14)
 	
     # perform a device inquiry on bluetooth device #0
@@ -180,9 +182,9 @@ def parse_events(sock, loop_count=100):
 		    	if (returnstringpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6]) == '2f234454cf6d4a0fadf2f4911ba9ffa6'):
 		    		print "Found the beacon we want!"
 		    		GPIO.output(11, True)
-		    		global timeOut = 25
+		    		timeOut = 25
 		    	else:
-		    		global timeOut = timeOut - 1
+		    		timeOut = timeOut - 1
 		    		if (timeOut <= 0):
 		    			GPIO.output(11, False)
 		    			timeOut = 25
