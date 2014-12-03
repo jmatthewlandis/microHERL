@@ -177,6 +177,7 @@ def parse_events(sock, loop_count=100):
 		
 		    if (DEBUG == True):
 			print "-------------"
+				print "\t\tCurrent value of timeOut is: ", timeOut
                     	#print "\tfullpacket: ", printpacket(pkt)
 		    	print "\tUDID: ", printpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6])
 		    	print "\t\t UDID as String: ", returnstringpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6])
