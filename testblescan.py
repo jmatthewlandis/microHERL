@@ -42,7 +42,7 @@ while True:
 	returnedList = blescan.parse_events(sock, 10)
 	#print "----------"
 	for beacon in returnedList:
-		if (returnstringpacket(beacon.pkt)) == "2f 23 44 54 cf 6d 4a 0f ad f2 f4 91 1b a9 ff a6 None")
+		if (returnstringpacket(beacon.pkt)) == '2f 23 44 54 cf 6d 4a 0f ad f2 f4 91 1b a9 ff a6 None')
 		print("Found correct beacon!!!")
 		#print beacon
 
