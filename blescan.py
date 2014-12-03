@@ -138,10 +138,10 @@ def hci_le_set_scan_parameters(sock):
 
     
 def parse_events(sock, loop_count=100):
-	old_filter = sock.getsockopt( bluez.SOL_HCI, bluez.HCI_FILTER, 14)
-	
-	# Initialize our time out variable so we can deactivate the light after a certain time
-	timeOut = 25
+    old_filter = sock.getsockopt( bluez.SOL_HCI, bluez.HCI_FILTER, 14)
+    global timeOut	
+    # Initialize our time out variable so we can deactivate the light after a certain time
+    #timeOut = 25
 	
     # perform a device inquiry on bluetooth device #0
     # The inquiry should last 8 * 1.28 = 10.24 seconds
@@ -177,7 +177,7 @@ def parse_events(sock, loop_count=100):
 		
 		    if (DEBUG == True):
 			print "-------------"
-			    print "\t\tValue of timeOut is: ", timeOut
+			print "\t\tValue of timeOut is: ", timeOut
 		    	print "\tUDID: ", printpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6])
 		    	print "\t\t UDID as String: ", returnstringpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6])
 		    	if (returnstringpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6]) == '2f234454cf6d4a0fadf2f4911ba9ffa6'):
