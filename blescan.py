@@ -185,7 +185,7 @@ def parse_events(sock, loop_count=100):
 		    		GPIO.output(11, True)
 		    		timeOut = 25
 		    	else:
-		    		timeOut -= 1
+		    		timeOut = timeOut - 1
 		    		if (timeOut <= 0):
 		    			GPIO.output(11, False)
 		    			timeOut = 25
