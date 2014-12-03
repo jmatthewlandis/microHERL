@@ -151,6 +151,7 @@ def parse_events(sock, loop_count=100):
 			print "-------------"
                     	#print "\tfullpacket: ", printpacket(pkt)
 		    	print "\tUDID: ", printpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6])
+		    	print "\t\t UDID as String: ", returnstringpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6])
 		    	if (returnstringpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6]) == '2f 23 44 54 cf 6d 4a 0f ad f2 f4 91 1b a9 ff a6'):
 		    		print "Found the beacon we want!"
 		    	
